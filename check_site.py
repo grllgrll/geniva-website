@@ -26,5 +26,5 @@ for p in root.rglob('*.html'):
   assert target.exists(),(p,link)
   if u.fragment and target.suffix=='.html':assert u.fragment in Page(target.read_text()).ids,(p,link)
  count+=1
-assert count==8,count
+assert count==10,count
 print(f'{count} pages: local assets, links, fragments, headings, contact details and team removal OK.')

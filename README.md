@@ -24,4 +24,14 @@ python3 check_site.py
 
 ## Verification
 
-All eight pages checked in browser at 360px and 1440px: no horizontal overflow or broken loaded images. Mobile navigation, Escape, image dialog, and language switch checked. Static link/asset/fragment checks run by check_site.py.
+All ten pages checked in browser at 360px and 1440px: no horizontal overflow or broken loaded images. Mobile navigation, Escape, image dialog, and language switch checked. Static link/asset/fragment checks run by check_site.py.
+
+## Content expansion
+
+`enhancements.py` defines the clearer service routes, conceptual platform view, longevity laboratory photo slots and references page in both languages. Lab photographs can replace `.lab-photo-placeholder[data-photo-slot="microarray"]` and `[data-photo-slot="long-read"]`. No real lab photographs are claimed.
+
+Reference institutions and publication metadata: user-supplied Gennext_Company_Overview_EN.pptx, slides 10–13 and slide 13 speaker notes. Only study-specific contributions are stated. Seven publications are selected, distinguishing peer-reviewed articles, a preprint and abstracts.
+
+Representative hardware image: user's uploaded ASUS AP201 Amazon HTML, `landingImage` / `data-old-hires`: https://m.media-amazon.com/images/I/91FW0IOXncL._AC_SL1500_.jpg. This represents the chassis, not a fixed offered machine specification.
+
+Laboratory capability and metabolomics/lipidomics scope were supplied directly by the user. Local microarray and Nanopore laboratory work is described separately from the wider multi-omics approach.

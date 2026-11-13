@@ -128,6 +128,7 @@ def contact(d,p):
  options=''.join(f'<a class="contact-option" href="{mail(subject)}"><h2>{title}{OUT}</h2><p>{desc}</p></a>' for title,desc,subject in d['contactoptions'])
  return f'''<main id="main">{innerhero(d,d['contacttitle'],d['contactlead'],'contact')}<section class="section"><div class="container contact-grid"><div class="contact-info"><h2>{d['contactheading']}</h2><p>{d['contactbody']}</p><div class="contact-method">{icon('email')}<div><small>{d['email']}</small><a href="mailto:info@gennext.bio">info@gennext.bio</a><br><button class="copy-email">{d['copy']}</button><p class="copy-status" role="status" aria-live="polite"></p></div></div><div class="contact-method">{icon('phone')}<div><small>{d['phone']}</small><a href="tel:+902165004471">+90 (216) 500 44 71</a></div></div></div><div><div class="contact-options">{options}</div><p class="contact-note">{d['contactnote']}</p><a class="contact-channel" href="{CHANNEL}" target="_blank" rel="noopener"><strong>Gennext Community ↗</strong><span>{d['learnDesc']}</span></a></div></div><div class="container">{location(d)}</div></section></main>'''
 RENDERERS={'index':home,'solutions':solutions,'about':about,'contact':contact}
+exec((ROOT/'enhancements.py').read_text(), globals())
 for lang,d in COPY.items():
  prefix='../' if lang=='en' else ''
  out=ROOT/'en' if lang=='en' else ROOT
@@ -135,8 +136,8 @@ for lang,d in COPY.items():
  for page in PAGES:
   tr=('../' if lang=='en' else '')+page+'.html'
   en=page+'.html' if lang=='en' else 'en/'+page+'.html'
-  desc={'index':d['herodesc'],'solutions':d['solutionslead'],'about':d['aboutlead'],'contact':d['contactlead']}[page]
+  desc={'index':d['herodesc'],'solutions':d['solutionslead'],'about':d['aboutlead'],'contact':d['contactlead'],'references':d['aboutlead']}[page]
   preload=f'<link rel="preload" href="{prefix}assets/hero.webp" as="image">' if page=='index' else ''
   html=f'''<!doctype html><html lang="{lang}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{d['titles'][page]}</title><meta name="description" content="{escape(desc,quote=True)}"><meta name="theme-color" content="#101f3d"><meta name="robots" content="noindex,follow"><meta property="og:type" content="website"><meta property="og:site_name" content="Geniva"><meta property="og:title" content="{d['titles'][page]}"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:image" content="https://geniva-web.ozkanozdemir.chatgpt.site/assets/hero.webp"><link rel="alternate" hreflang="tr" href="{tr}"><link rel="alternate" hreflang="en" href="{en}"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="preload" href="{prefix}assets/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>{preload}<link rel="stylesheet" href="{prefix}styles.css"><script src="{prefix}app.js" defer></script></head><body>{header(d,lang,page)}{RENDERERS[page](d,prefix)}{footer(d,prefix)}</body></html>'''
   (out/(page+'.html')).write_text(html)
-print('Built 8 pages: TR and EN; home, solutions, about, contact.')
+print('Built 10 bilingual pages.')
