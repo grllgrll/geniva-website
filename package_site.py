@@ -11,7 +11,9 @@ for name in ['styles.css','app.js']:shutil.copy2(root/name,dist/name)
 assets=dist/'assets';assets.mkdir(exist_ok=True)
 used={'FONT-LICENSE.txt'}
 for p in list(dist.glob('*.html'))+list((dist/'en').glob('*.html'))+[dist/'styles.css']:
- used.update(re.findall(r'assets/([a-zA-Z0-9_.-]+)',p.read_text()))
-for name in used:shutil.copy2(root/'assets'/name,assets/name)
+ used.update(re.findall(r'assets/([a-zA-Z0-9_./-]+)',p.read_text()))
+for name in used:
+ (assets/name).parent.mkdir(parents=True,exist_ok=True)
+ shutil.copy2(root/'assets'/name,assets/name)
 (dist/'robots.txt').write_text('User-agent: *\nDisallow: /\n')
 print('Packaged static site in dist; private review publication, indexing disabled.')

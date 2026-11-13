@@ -1,0 +1,202 @@
+{
+  "logos": {
+    "Acıbadem Mehmet Ali Aydınlar Üniversitesi · ACURARE": {
+      "asset": "assets/logos/acibadem.png",
+      "url": "https://www.acibadem.edu.tr/",
+      "source": "https://www.acibadem.edu.tr/themes/custom/acu/logo-en.svg",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "Marmara Üniversitesi": {
+      "asset": "assets/logos/marmara.png",
+      "url": "https://www.marmara.edu.tr/",
+      "source": "https://kurumsaliletisim.marmara.edu.tr/_assets/marmara/custom/images/mar_logo.png?v=1.1",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "Ege Üniversitesi": {
+      "asset": "assets/logos/ege.jpeg",
+      "url": "https://ege.edu.tr/",
+      "source": "https://egelogo.ege.edu.tr/download/diger/ege/egeweb.jpg",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "Ümraniye Eğitim ve Araştırma Hastanesi": {
+      "asset": "assets/logos/umraniye.png",
+      "url": "https://umraniyeah.saglik.gov.tr/",
+      "source": "https://dosyahastane.saglik.gov.tr/WebFiles/logolar/logo-tr.png",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "İstgen Genetik Hastalıklar Değerlendirme Merkezi": {
+      "asset": "assets/logos/istgen.png",
+      "url": "https://istgen.com.tr/",
+      "source": "https://istgen.com.tr/wp-content/uploads/2025/12/istgen-logo-2025.webp",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "Kocaeli Üniversitesi · Tıbbi Genetik": {
+      "asset": "assets/logos/kocaeli.png",
+      "url": "https://www.kocaeli.edu.tr/",
+      "source": "https://sertifika.kocaeli.edu.tr/setup/assets/img/logo.png",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "Süleyman Demirel Üniversitesi · Tıbbi Patoloji": {
+      "asset": "assets/logos/sdu.png",
+      "url": "https://sdu.edu.tr/",
+      "source": "https://sdu.edu.tr/assets/images/sdu-logo-midi.png",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "RootWell": {
+      "asset": "assets/logos/rootwell.png",
+      "url": null,
+      "source": "Company-supplied RootWell sample report",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "AlbertHealth": {
+      "asset": "assets/logos/alberthealth.png",
+      "url": "https://www.albert.health/contact",
+      "source": null,
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "Özel Doktor Terziler Kliniği": {
+      "asset": "assets/logos/drterziler.png",
+      "url": "https://drterziler.com/",
+      "source": null,
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "Dripfy": {
+      "asset": "assets/logos/dripfy.png",
+      "url": "https://dripfy.de/",
+      "source": "https://dripfy.de/cdn/shop/files/logo_dripfy.png?v=1745516783&width=280",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "WeHealth": {
+      "asset": "assets/logos/wehealth.png",
+      "url": "https://we-health.com.tr/",
+      "source": "https://we-health.com.tr/images/LogoHorizontal.svg",
+      "dark": true,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "Acıbadem Life": {
+      "asset": "assets/logos/acibademlife.png",
+      "url": "https://acibademlife.com/",
+      "source": "https://acibademlife.com/assets/images/logo.svg",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "UPlife": {
+      "asset": "assets/logos/uplife.png",
+      "url": null,
+      "source": "Company-supplied UPlife Genetics sample report",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "Nuen Clinic": {
+      "asset": "assets/logos/nuen.png",
+      "url": "https://www.nuenwellbeing.com/",
+      "source": "https://www.nuenwellbeing.com/assets/images/logo.png",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "3D1K": {
+      "asset": "assets/logos/3d1k.png",
+      "url": "https://3d1kgenetik.com/",
+      "source": "https://3d1kgenetik.com/wp-content/uploads/2020/02/3d1k-logo-04.png",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "SportoTeam": {
+      "asset": "assets/logos/sportoteam.png",
+      "url": "https://sportoteam.com.tr/team",
+      "source": null,
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    },
+    "GenomiColor": {
+      "asset": "assets/logos/genomicolor.jpeg",
+      "url": "https://orphealab.com/genomicolor/",
+      "source": "https://orphealab.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-07-27-at-14.32.58.jpeg",
+      "dark": false,
+      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    }
+  },
+  "citations": {
+    "https://doi.org/10.3389/fped.2024.1412880": {
+      "authors": "Guner Yilmaz B, Akgun-Dogan O, Ozdemir O, et al.",
+      "title": "Rapid genome sequencing for critically ill infants: an inaugural pilot study from Turkey",
+      "journal": "Front Pediatr.",
+      "details": "2024;12:1412880.",
+      "doi": "10.3389/fped.2024.1412880",
+      "url": "https://doi.org/10.3389/fped.2024.1412880",
+      "source": "https://www.frontiersin.org/journals/pediatrics/articles/10.3389/fped.2024.1412880/full",
+      "kind": "article"
+    },
+    "https://doi.org/10.3389/fgene.2025.1624306": {
+      "authors": "Onder G, Ozdemir O, Taylan F, et al.",
+      "title": "Genetic heterogeneity in childhood leukemia/lymphoma: a Turkish cohort with strong predisposition",
+      "journal": "Front Genet.",
+      "details": "2025;16:1624306.",
+      "doi": "10.3389/fgene.2025.1624306",
+      "url": "https://doi.org/10.3389/fgene.2025.1624306",
+      "source": "https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2025.1624306/full",
+      "kind": "article"
+    },
+    "https://doi.org/10.3389/fneur.2026.1742186": {
+      "authors": "Yigit A, Akgun-Dogan O, Ozkeserli Z, et al.",
+      "title": "Unmasking genetic etiologies in neurodevelopmental disorders characterized by Cerebral Palsy: insights from integrative genomic approaches",
+      "journal": "Front Neurol.",
+      "details": "2026;17:1742186.",
+      "doi": "10.3389/fneur.2026.1742186",
+      "url": "https://doi.org/10.3389/fneur.2026.1742186",
+      "source": "https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2026.1742186/full",
+      "kind": "article"
+    },
+    "https://doi.org/10.1038/s41431-026-02177-9": {
+      "authors": "Yigit A, Pekerbas M, Salman B, et al.",
+      "title": "Integrative and systematic genomic approaches to improve diagnosis in rare and undiagnosed diseases: results from the RareBoost project",
+      "journal": "Eur J Hum Genet.",
+      "details": "2026. Published online July 9.",
+      "doi": "10.1038/s41431-026-02177-9",
+      "url": "https://doi.org/10.1038/s41431-026-02177-9",
+      "source": "https://www.nature.com/articles/s41431-026-02177-9",
+      "kind": "article"
+    },
+    "https://doi.org/10.21203/rs.3.rs-8842818/v1": {
+      "authors": "Akgun-Dogan O, Ozdemir O, Ozkose-Iyigel GS, et al.",
+      "title": "Undiagnosed Diseases Program-Istanbul (UDP-IST): Diagnostic Impact of Systematic Genomic Reanalysis with Deep Phenotyping in 121 Patients",
+      "journal": "Research Square [Preprint].",
+      "details": "2026. Posted May 11.",
+      "doi": "10.21203/rs.3.rs-8842818/v1",
+      "url": "https://doi.org/10.21203/rs.3.rs-8842818/v1",
+      "source": "https://assets-eu.researchsquare.com/files/rs-8842818/v1/d819ee19-5463-4f47-b315-3a869d616afd.pdf?c=1778500960",
+      "kind": "preprint"
+    },
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC10429261/": {
+      "authors": "Önder G, Amanvermez U, Canpolat C, et al.",
+      "title": "Determining molecular background of a group of childhood leukemia/lymphoma patients with positive family history from Türkiye",
+      "journal": "HemaSphere.",
+      "details": "2023;7(Suppl):e5926107. Abstract PB2401.",
+      "doi": null,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10429261/",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10429261/",
+      "kind": "abstract"
+    },
+    "https://tusebjournal.org/pdf/e92af88c-e19e-4edc-9ffc-eda5f1b4ae56/articles/tuseb-80/2024-Ek-1.pdf#page=33": {
+      "authors": "Ergun B, Turan HA, Aydın E, Özdemir Ö.",
+      "title": "GenNext: Next-Generation Analysis Platform for Next-Generation Sequencing Data",
+      "journal": "TÜSEB Dergisi.",
+      "details": "2024;7(Suppl-1):33-34. Abstract.",
+      "doi": null,
+      "url": "https://tusebjournal.org/pdf/e92af88c-e19e-4edc-9ffc-eda5f1b4ae56/articles/tuseb-80/2024-Ek-1.pdf#page=33",
+      "source": "https://tusebjournal.org/pdf/e92af88c-e19e-4edc-9ffc-eda5f1b4ae56/articles/tuseb-80/2024-Ek-1.pdf#page=33",
+      "kind": "abstract"
+    }
+  }
+}

@@ -17,7 +17,7 @@ for p in root.rglob('*.html'):
  text=p.read_text();page=Page(text)
  assert page.h1==1,p
  assert 'team-section' not in text and 'Ekibimiz' not in text and 'Meet our team' not in text,p
- for required in ['https://www.youtube.com/@GennextCommunity','info@gennext.bio','tel:+902165004471','TEKMER']:
+ for required in ['https://www.youtube.com/@GennextCommunity','info@gennext.bio','tel:+902162504471','TEKMER']:
   assert required in text,(p,required)
  for link in page.links:
   u=urlsplit(link)
