@@ -31,9 +31,6 @@ h1,h2,h3{text-wrap:balance}p{text-wrap:pretty}.language a{min-height:44px;min-wi
 @media(max-width:760px){.section{padding:52px 0}.section-head{display:block;margin-bottom:28px}.section-head>p{padding:0;margin-top:20px}.section-head h2,h2{font-size:32px}.inner-hero{padding:28px 0 36px}.inner-hero h1{font-size:38px}.inner-hero .lead{font-size:17px}.solution-choices{gap:14px}.solution-choice{padding:20px}.solution-choice>span{margin-bottom:12px}.solution-choice h3{font-size:24px;margin-bottom:10px}.solution-choice p{padding-bottom:16px}.product-intro>div{display:block}.product-intro .product-logo{margin-bottom:16px}.product-intro h2{font-size:32px}.product-intro p{margin-top:18px}.platform-concept{padding:18px}.concept-header>span{font-size:10px}.flow-cell{padding:13px}.flow-cell strong{font-size:18px}.flow-cell p{min-height:42px}.signal-bars{height:26px}.lab-compact .container{display:block}.lab-compact h2{font-size:32px}.lab-compact .container>div+div{margin-top:20px}.lab-photo-placeholder{min-height:180px}.lab-photos{gap:16px}.lab-capabilities h3{font-size:24px}.hardware-photo img{height:280px}.community-visual{min-height:260px}.community-symbol{width:60px;margin:20px 0}.reference-groups{grid-template-columns:1fr;gap:28px}.reference-group:last-child ul{grid-template-columns:1fr 1fr;gap:0 20px}.reference-group li{font-size:15px}.publication h3{font-size:20px}.evidence-teaser h2{font-size:32px}.nav-links .mobile-gennext{display:block}.contact-grid{gap:32px}.cta{padding:48px 0}.cta h2{font-size:32px}.concept-modules{gap:26px}.hero-actions{flex-wrap:wrap}}
 @media(max-width:380px){.reference-group:last-child ul{grid-template-columns:1fr}.inner-hero h1{font-size:35px}}
 
-
-
-
 /* Product illustrations and evidence, November 2026. */
 .solution-choice { position:relative; padding-top:28px; }
 .solution-choice .choice-arrow { position:absolute; right:18px; top:20px; font-size:21px; margin:0; }
@@ -171,3 +168,100 @@ h1,h2,h3{text-wrap:balance}p{text-wrap:pretty}.language a{min-height:44px;min-wi
 .coordination-lane:after { content:''; position:absolute; left:50%; bottom:0; height:18px; border-left:1px dashed #9cc5d0; }
 
 @media(max-width:760px){.institution-logo img[src$="acibadem.png"]{width:136px;height:52px;max-height:52px}.institution-logo img[src$="dripfy.png"]{width:116px;height:50px}.institution-logo.logo-dark{height:50px}}
+
+/* Responsive layout refinements, November 2026. */
+.section-head > *, .product-intro > div > *, .reference-group,
+.reference-logos .reference-group li, .footer-top > *,
+.federation-coordinator > div, .contact-grid > * { min-width:0; }
+.reference-logos .reference-group ul { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.institution-name, .citation > p, .contact-method a, .footer-nav a { overflow-wrap:anywhere; }
+.button, .text-link { max-width:100%; }
+.button { overflow-wrap:anywhere; }
+.contact-method > svg { flex-shrink:0; }
+.coordination-lane > span { white-space:nowrap; }
+
+/* Switch to the menu before the full navigation becomes crowded. */
+@media(max-width:960px) {
+ html { scroll-padding-top:90px; }
+ .site-header { height:74px; background:var(--navy); backdrop-filter:none; -webkit-backdrop-filter:none; }
+ .nav-inner { gap:16px; }
+ .brand { font-size:31px; }
+ .nav-tools { margin-left:auto; gap:12px; }
+ .nav-contact { display:none; }
+ .menu-toggle { display:block; flex-shrink:0; }
+ .language { gap:6px; }
+ .language a { min-width:28px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; }
+ .nav-links {
+  display:none; position:fixed; inset:74px 0 0; margin:0;
+  height:calc(100vh - 74px); height:calc(100dvh - 74px);
+  padding:20px 24px max(28px,env(safe-area-inset-bottom));
+  background:var(--navy); flex-direction:column; align-items:stretch;
+  gap:4px; font-size:22px; overflow-y:auto; overscroll-behavior:contain;
+ }
+ .nav-links.open { display:flex; }
+ .nav-links a { padding:13px 0; border-bottom:1px solid #ffffff20; flex-shrink:0; }
+ .nav-links a::after { display:none; }
+ .nav-links a[aria-current] { color:var(--coral); }
+ .nav-links .mobile-gennext { display:block; }
+}
+
+@media(max-width:760px) {
+ .container { width:calc(100% - 40px); }
+ h1,h2,h3 { overflow-wrap:break-word; }
+ .hero-content { min-height:0; padding-top:44px; padding-bottom:100px; }
+ .hero h1 { font-size:clamp(36px,9.4vw,54px); }
+ .hero-actions { align-items:stretch; gap:12px; }
+ .hero-foot > span:last-child { flex-wrap:wrap; gap:8px 18px; }
+ .cta .button { white-space:normal; text-align:left; }
+ .solution-choice h3 { min-height:0; }
+ .solution-choice > strong { margin-top:16px; }
+ .reference-groups { margin-top:30px; }
+ .reference-preview { grid-template-columns:minmax(0,1fr); }
+ .section-head h2, .product-intro h2, .lab-compact h2,
+ .evidence-teaser h2, .cta h2, h2 { font-size:clamp(29px,7.5vw,34px); }
+ .inner-hero h1 { font-size:clamp(32px,8.5vw,40px); }
+ .product-illustration figcaption { font-size:12px; line-height:1.5; }
+ .hardware-gallery { max-width:440px; }
+ .video-links .text-link { min-height:44px; }
+ .federation-heading strong { font-size:21px; }
+ .local-pipeline { gap:3px; }
+ .local-pipeline strong { font-size:12px; }
+ .footer-nav a { min-height:44px; }
+}
+
+@media(max-width:600px) {
+ .omics-layers { grid-template-columns:minmax(0,1fr); gap:24px; }
+ .omics-layer h3 { font-size:24px; }
+ .hero-actions { flex-direction:column; align-items:flex-start; }
+ .hero-actions .button { width:100%; justify-content:space-between; }
+ .hero .text-link { min-height:44px; }
+ .button { gap:18px; }
+ .reference-logos .reference-group ul,
+ .reference-logos .reference-group:last-child ul { grid-template-columns:minmax(0,1fr); gap:10px; }
+ .reference-logos .reference-group li {
+  display:grid; grid-template-columns:92px minmax(0,1fr); align-items:center;
+  gap:16px; min-height:96px; padding:16px; text-align:left;
+ }
+ .institution-logo { width:92px; height:60px; }
+ .institution-logo img { max-width:88px; max-height:56px; }
+ .institution-logo img[src$="acibadem.png"] { width:92px; height:38px; max-height:38px; }
+ .institution-logo img[src$="dripfy.png"] { width:88px; height:42px; }
+ .institution-name { font-size:15px; line-height:1.45; }
+ .reference-logos .reference-group .plain-references li { display:block; }
+ .publication.citation { padding:22px 0; }
+ .citation > p { line-height:1.7; }
+ .lab-services h3 { font-size:23px; }
+}
+
+@media(max-width:480px) {
+ .container { width:calc(100% - 32px); }
+ .footer-top { grid-template-columns:minmax(0,1fr); gap:28px; }
+ .footer-brand, .footer-top > .footer-nav:last-child { grid-column:auto; }
+ .location-card { padding:24px; }
+ .contact-option { padding:20px; }
+ .contact-option h2 { font-size:23px; gap:12px; }
+ .reference-logos .reference-group li { grid-template-columns:84px minmax(0,1fr); gap:14px; padding:14px; }
+ .institution-logo { width:84px; }
+ .institution-logo img, .institution-logo img[src$="acibadem.png"],
+ .institution-logo img[src$="dripfy.png"] { max-width:84px; }
+}

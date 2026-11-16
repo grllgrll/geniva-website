@@ -77,20 +77,6 @@
       "dark": false,
       "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
     },
-    "WeHealth": {
-      "asset": "assets/logos/wehealth.png",
-      "url": "https://we-health.com.tr/",
-      "source": "https://we-health.com.tr/images/LogoHorizontal.svg",
-      "dark": true,
-      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
-    },
-    "Acıbadem Life": {
-      "asset": "assets/logos/acibademlife.png",
-      "url": "https://acibademlife.com/",
-      "source": "https://acibademlife.com/assets/images/logo.svg",
-      "dark": false,
-      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
-    },
     "UPlife": {
       "asset": "assets/logos/uplife.png",
       "url": null,
@@ -119,12 +105,17 @@
       "dark": false,
       "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
     },
-    "GenomiColor": {
-      "asset": "assets/logos/genomicolor.jpeg",
-      "url": "https://orphealab.com/genomicolor/",
-      "source": "https://orphealab.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-07-27-at-14.32.58.jpeg",
-      "dark": false,
-      "extracted_from": "Gennext_Company_Overview_EN.pptx, slides 10-12"
+    "Portakal Klinik": {
+      "asset": "assets/logos/portakal.png",
+      "url": "https://www.drmehmetportakal.com/",
+      "source": "https://www.drmehmetportakal.com/wp-content/themes/mehmet-portakal/assets/logo-marka.png",
+      "dark": false
+    },
+    "İstanbul Üniversitesi · Aziz Sancar Deneysel Tıp Araştırma Enstitüsü (DETAE)": {
+      "asset": "assets/logos/detae.png",
+      "url": "https://deneyseltip.istanbul.edu.tr/tr",
+      "source": "https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=asdetae-logoo.png",
+      "dark": false
     }
   },
   "citations": {

@@ -55,7 +55,24 @@ def solutions(d,p):
  topics=''.join(f'<article class="topic"><h3>{a}</h3><ul>'+''.join(f'<li>{x}</li>' for x in b)+'</ul></article>' for a,b in d['trainingtopics'])
  return f'''<main id="main">{innerhero(d,pick(d,'İhtiyacınıza uygun<br>çözümü bulun.','Find the solution<br>that fits your needs.'),d['solutionslead'],'solutions')}<section class="section"><div class="container">{solution_choices(d)}</div></section><section class="section product-band" id="software"><div class="container"><div class="section-head"><div><p class="eyebrow">01 / GENNEXT</p><h2>{pick(d,'Dizileme verisinden<br>değerlendirilebilir bulgulara.','Sequencing data.<br>Findings you can assess.')}</h2></div><p>{d['softwarebody']}</p></div>{screen(d,p)}{sequencing(d)}<div class="clinical-options">{cards}</div><p class="scope-note">{pick(d,'Longevity raporları kişiselleştirilmiş sağlık danışmanlığını destekler; tanı testi değildir.','Longevity reports support personalised health guidance; they are not diagnostic tests.')}</p><div class="solution-actions">{link(pick(d,'Gennext.bio’yu ziyaret edin','Visit Gennext.bio'),'https://gennext.bio','button navy',external=True)}{link(d['demobtn'],'contact.html')}{link(d['brochure'],p+'assets/gennext-somatic-'+('en' if d['home']=='Home' else 'tr')+'.pdf',external=True)}</div></div></section><section class="section" id="hardware"><div class="container"><div class="hardware-split"><div><p class="eyebrow">02 / WORKER NODE</p><h2>{pick(d,'Analiz altyapınız,<br>kurumunuzun içinde.','Your analysis infrastructure.<br>At your institution.')}</h2><p>{d['hardwarebody']}</p><ul class="hardware-points"><li>{pick(d,'Örnek hacmi ve eş zamanlı analiz ihtiyacına göre kapasite','Capacity planned for sample volume and concurrent workloads')}</li><li>{pick(d,'Hesaplama ve depolama kaynaklarının birlikte planlanması','Coordinated computing and storage planning')}</li><li>{pick(d,'Mevcut altyapıya uygun kurulum','Deployment suited to existing infrastructure')}</li></ul>{link(d['hardwarebtn'],'contact.html','button navy')}</div>{hardware(d,p)}</div><div class="hardware-architecture">{diagram(d)}<div><h3>{pick(d,'Yerel işleme, merkezi koordinasyon','Local processing, central coordination')}</h3><p>{d['archdesc']}</p></div></div></div></section>{laboratory(d,p)}<section class="section" id="training"><div class="container"><p class="eyebrow">04 / {d['fields'][2]}</p><h2>{d['services'][2][0]}</h2><p class="training-intro">{d['trainingbody']}</p><div class="training-topics">{topics}</div>{link(d['trainingbtn'],'contact.html','button navy')}</div></section>{community(d,p)}{cta(d)}</main>'''
 
-REFERENCE_GROUPS=[('Germline',['Acıbadem Mehmet Ali Aydınlar Üniversitesi · ACURARE','Marmara Üniversitesi','Ege Üniversitesi','Ümraniye Eğitim ve Araştırma Hastanesi']),('Somatik / Somatic',['İstgen Genetik Hastalıklar Değerlendirme Merkezi','Kocaeli Üniversitesi · Tıbbi Genetik','Süleyman Demirel Üniversitesi · Tıbbi Patoloji']),('Longevity',['Acıbadem Life','RootWell','AlbertHealth','Özel Doktor Terziler Kliniği','Dripfy','WeHealth','UPlife','Nuen Clinic','Dr. Nurcivan Ünsal Üz','Portakal Klinik','3D1K','SportoTeam','GenomiColor','Prof. Dr. Murat Baş','Doç. Dr. Demet Akpolat','Dr. Muhammet İkbal Bakırcı'])]
+REFERENCE_GROUPS=[
+ ('Germline',[
+  'Acıbadem Mehmet Ali Aydınlar Üniversitesi · ACURARE',
+  'Marmara Üniversitesi',
+  'Ege Üniversitesi',
+  'Ümraniye Eğitim ve Araştırma Hastanesi',
+  'İstanbul Üniversitesi · Aziz Sancar Deneysel Tıp Araştırma Enstitüsü (DETAE)',
+ ]),
+ ('Somatik / Somatic',[
+  'İstgen Genetik Hastalıklar Değerlendirme Merkezi',
+  'Kocaeli Üniversitesi · Tıbbi Genetik',
+  'Süleyman Demirel Üniversitesi · Tıbbi Patoloji',
+ ]),
+ ('Longevity',[
+  'RootWell','AlbertHealth','Özel Doktor Terziler Kliniği','Dripfy',
+  'UPlife','Nuen Clinic','Portakal Klinik','3D1K','SportoTeam',
+ ]),
+]
 PUBS=[
 ('article','Rapid genome sequencing for critically ill infants: an inaugural pilot study from Turkey','Guner Yilmaz et al. · Frontiers in Pediatrics · 2024','VCF anotasyonu','VCF annotation','https://doi.org/10.3389/fped.2024.1412880'),
 ('article','Genetic heterogeneity in childhood leukemia/lymphoma: a Turkish cohort with strong predisposition','Onder et al. · Frontiers in Genetics · 2025','Veri işleme, anotasyon ve varyant filtreleme','Data processing, annotation and variant filtering','https://doi.org/10.3389/fgene.2025.1624306'),
