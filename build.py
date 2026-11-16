@@ -11,7 +11,7 @@ PAGES = ['index', 'solutions', 'software', 'hardware', 'training', 'about', 'ref
 CHANNEL = 'https://www.youtube.com/@GennextCommunity'
 ADDRESS = 'İçerenköy Mah. Kayışdağı Cad. Acıbadem Üniversitesi Tıp Fakültesi, C Blok No: 32-36C, TEKMER, Ataşehir / İstanbul'
 MAPS = 'https://www.google.com/maps/search/?api=1&query=' + quote(ADDRESS)
-VERSION = '20261116f'
+VERSION = '20261116g'
 
 def brand():
     return '<span class="brand">geniva<span aria-hidden="true">.</span></span>'
