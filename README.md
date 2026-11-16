@@ -1,37 +1,55 @@
-# Geniva — final website
+# Geniva website
 
-Bilingual static corporate website. Editable copy/templates: `build.py`; styles: `styles.css`; interactions: `app.js`.
+English-first corporate site centred on **Software, Hardware and Training for health big data**.
 
-Build and verify:
+## Editing and building
+
+- `site_pages.py`: bilingual copy, service definitions and semantic page templates.
+- `build.py`: shared navigation/footer, metadata, language routing and page generation.
+- `styles.css`: shared design and responsive layouts.
+- `app.js`: mobile menu, accessible dropdown handling, language switching, email copy and legacy section redirects.
+- `assets/reference-data.json`: approved reference groups, logo provenance and original publication metadata.
+
+Run with Python 3.10 or later:
 
 ```sh
 python3 package_site.py
 python3 check_site.py
+node --check app.js
 ```
 
-`dist/` contains the deployable website. Preview: `python3 -m http.server 8769 --bind 127.0.0.1 --directory dist`.
+`dist/` is generated deployment output. Packaging copies only the media used by the current pages. `build.py` creates 16 content pages and 8 compatibility redirects. Optional local preview: `python3 -m http.server 8770 --bind 127.0.0.1 --directory dist`.
 
-## Content decisions
+## Routes and content
 
-- Main message: “Genomik veriyi anlamlandırıyoruz.” Multi-omics remains supporting content.
-- Team and advisory profiles are removed.
-- Contact address, email, telephone, and YouTube destination are sourced from Gennext Somatic Brochure v19, page 8. Source QR target: https://www.youtube.com/@GennextCommunity.
-- PDFs are the supplied Turkish and English v19 brochures.
-- Contact actions use mailto, tel, and maps links. No simulated form submission or unsolicited data collection.
-- YouTube is an external link; no third-party video embeds or analytics.
-- Brochure artwork is conceptual. Product screenshot is from the existing brochure assets.
-- Current deployment is owner-private and deliberately not indexed. This does not replace the existing corporate domain.
+English pages live at the root; Turkish pages are under `/tr/`. `/en/` redirects preserve existing English links, search parameters and fragments. Each language contains Home, Solutions, Software, Hardware, Training, About, References and Contact.
 
-## Verification
+Solutions is an overview. Software contains Gennext, clinical genomics, longevity automation/reporting, laboratory support and the YouTube introduction. Hardware contains Worker Node/server imagery, capacity planning and the precise federation diagram. Training describes audience, scope, learning outcomes and community resources.
 
-All ten pages checked in browser at 360px and 1440px: no horizontal overflow or broken loaded images. Mobile navigation, Escape, image dialog, and language switch checked. Static link/asset/fragment checks run by check_site.py.
+Old Solutions section links are forwarded to the respective detail pages. Language changes keep the current page and section. No browser-language auto-redirect or language preference storage overrides the English default.
 
-## Content expansion
+The exact agreed homepage copy is:
 
-`enhancements.py` defines the clearer service routes, conceptual platform view, longevity laboratory photo slots and references page in both languages. Lab photographs can replace `.lab-photo-placeholder[data-photo-slot="microarray"]` and `[data-photo-slot="long-read"]`. No real lab photographs are claimed.
+> Software, hardware and training for health big data.
+>
+> We develop software, build computing infrastructure and provide training for health data analysis, interpretation and reporting.
 
-Reference institutions and publication metadata: user-supplied Gennext_Company_Overview_EN.pptx, slides 10–13 and slide 13 speaker notes. Only study-specific contributions are stated. Seven publications are selected, distinguishing peer-reviewed articles, a preprint and abstracts.
+Gennext is Geniva's software product. Its own site is linked contextually and in the footer. No Gennext button appears in the header. Longevity includes automated data analysis and reporting through Gennext; the laboratory is supporting capacity. No team section is included.
 
-Representative hardware image: user's uploaded ASUS AP201 Amazon HTML, `landingImage` / `data-old-hires`: https://m.media-amazon.com/images/I/91FW0IOXncL._AC_SL1500_.jpg. This represents the chassis, not a fixed offered machine specification.
+## Sources and media
 
-Laboratory capability and metabolomics/lipidomics scope were supplied directly by the user. Local microarray and Nanopore laboratory work is described separately from the wider multi-omics approach.
+Reference groups and publications come from the supplied company presentation and the user's corrections. Original article titles are preserved, including the word “insights” in one article title; marketing copy does not use it. The previously removed seven references stay excluded.
+
+The DETAE and Portakal Klinik logos were retrieved from their official websites; source URLs are recorded in the reference data. Existing logos and publications retain their provenance. The Gennext interface and server illustrations are representative, not patient data or hardware specifications. The laboratory photo is the single supplied project image. Brochures are the provided TR/EN PDFs.
+
+Contact: info@gennext.bio, +90 216 250 4471, Acıbadem University TEKMER, Istanbul. Contact actions use mailto/tel/maps links; no simulated submission or analytics. The YouTube video is embedded on Software; Training links to the channel.
+
+## Verification and hosting
+
+`check_site.py` checks routing, language counterparts, local assets and fragments, accessible image text, page structure, reference counts and agreed content constraints. `check_responsive.py` checks computed CSS cascade rules at selected screen widths without launching a browser.
+
+`check_interactions.cjs` runs DOM-level checks with optional `jsdom@26.1.0`: menu state, Escape, resize cleanup, dropdown closure, language destinations, clipboard handling and legacy redirects. Set `GENIVA_QA_MODULES` to the node_modules directory containing jsdom when it is installed outside the project.
+
+Browser visual and interaction QA could not be performed in the November 16 environment because browser preview was unavailable. Static checks are not a substitute for a browser rendering check.
+
+The existing Sites project and owner-private access are preserved; indexing remains disabled. Publication does not change the company's external domains.

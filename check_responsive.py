@@ -1,0 +1,61 @@
+"""Static CSS cascade checks; these do not replace visual browser QA.
+Optional QA dependencies: lxml, tinycss2, cssselect2.
+"""
+from pathlib import Path
+import re
+from lxml import html
+import tinycss2, cssselect2
+
+ROOT=Path(__file__).resolve().parent/'dist'
+rules=tinycss2.parse_stylesheet((ROOT/'styles.css').read_text(),skip_comments=True,skip_whitespace=True)
+assert not [r for r in rules if r.type=='error']
+
+def active(query,width):
+ query=query.strip()
+ if query=='print' or 'prefers-reduced-motion' in query:return False
+ return all(width<=int(v) if kind=='max' else width>=int(v) for kind,v in re.findall(r'(max|min)-width:\s*(\d+)px',query))
+
+def matcher(width):
+ m=cssselect2.Matcher()
+ def add(items):
+  for rule in items:
+   if rule.type=='at-rule' and rule.lower_at_keyword=='media' and active(tinycss2.serialize(rule.prelude),width):
+    add(tinycss2.parse_rule_list(rule.content,skip_comments=True,skip_whitespace=True))
+   if rule.type=='qualified-rule':
+    declarations=tinycss2.parse_declaration_list(rule.content,skip_comments=True,skip_whitespace=True)
+    assert not [d for d in declarations if d.type=='error']
+    selector=tinycss2.serialize(rule.prelude)
+    if '::' in selector:continue
+    for compiled in cssselect2.compile_selector_list(selector):
+     m.add_selector(compiled,{d.lower_name:tinycss2.serialize(d.value).strip() for d in declarations if d.type=='declaration'})
+ add(rules)
+ return m
+
+def style(root,selector,m):
+ el=root.query(selector)
+ assert el is not None,selector
+ result={}
+ for _,_,pseudo,decl in m.match(el):
+  if pseudo is None:result.update(decl)
+ return result
+
+for width in [320,375,390,430,600,768,960,1024,1440]:
+ m=matcher(width)
+ for lang in ['', 'tr/']:
+  docs={p:cssselect2.ElementWrapper.from_html_root(html.fromstring((ROOT/lang/(p+'.html')).read_text())) for p in ['index','software','hardware','references','about']}
+  root=docs['index'];nav=style(root,'.nav-links',m);toggle=style(root,'.menu-toggle',m)
+  assert nav['display']==('none' if width<=960 else 'flex'),width
+  assert toggle['display']==('block' if width<=960 else 'none'),width
+  if width<=960:
+   assert nav['height']=='calc(100dvh - 74px)' and nav['overflow-y']=='auto'
+   assert 'backdrop-filter' not in style(root,'.site-header',m)
+   assert style(root,'.services-grid',m)['grid-template-columns']=='1fr'
+   assert style(docs['hardware'],'.federation-nodes',m)['grid-template-columns']=='1fr'
+  if width<=600:
+   assert style(root,'.service-card',m)['display']=='flex'
+   assert style(docs['references'],'.logo-grid',m)['grid-template-columns']=='1fr'
+   assert style(docs['software'],'.workflow',m)['grid-template-columns']=='1fr'
+   assert style(docs['hardware'],'.hardware-gallery',m)['grid-template-columns']=='1fr'
+   assert style(docs['about'],'.omics-layers',m)['grid-template-columns']=='1fr'
+ print(f'PASS {width}px: EN/TR navigation, service cards, workflow, images, references and omics CSS rules.')
+print('Static cascade checks only; no browser layout or interaction verification.')

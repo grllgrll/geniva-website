@@ -189,5 +189,39 @@
       "source": "https://tusebjournal.org/pdf/e92af88c-e19e-4edc-9ffc-eda5f1b4ae56/articles/tuseb-80/2024-Ek-1.pdf#page=33",
       "kind": "abstract"
     }
-  }
+  },
+  "groups": [
+    [
+      "Germline",
+      [
+        "Acıbadem Mehmet Ali Aydınlar Üniversitesi · ACURARE",
+        "Marmara Üniversitesi",
+        "Ege Üniversitesi",
+        "Ümraniye Eğitim ve Araştırma Hastanesi",
+        "İstanbul Üniversitesi · Aziz Sancar Deneysel Tıp Araştırma Enstitüsü (DETAE)"
+      ]
+    ],
+    [
+      "Somatik / Somatic",
+      [
+        "İstgen Genetik Hastalıklar Değerlendirme Merkezi",
+        "Kocaeli Üniversitesi · Tıbbi Genetik",
+        "Süleyman Demirel Üniversitesi · Tıbbi Patoloji"
+      ]
+    ],
+    [
+      "Longevity",
+      [
+        "RootWell",
+        "AlbertHealth",
+        "Özel Doktor Terziler Kliniği",
+        "Dripfy",
+        "UPlife",
+        "Nuen Clinic",
+        "Portakal Klinik",
+        "3D1K",
+        "SportoTeam"
+      ]
+    ]
+  ]
 }
