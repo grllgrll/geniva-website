@@ -23,7 +23,7 @@ class Page(HTMLParser):
  def handle_endtag(self,tag):
   if tag=='header':self.header=False
 
-root=Path(__file__).resolve().parent/'dist'
+root=Path(__file__).resolve().parent/'dist'/'client'
 real=[];aliases=[]
 for path in root.rglob('*.html'):
  text=path.read_text();page=Page(text)
@@ -49,8 +49,10 @@ for path in root.rglob('*.html'):
    assert text.count('class="service-card"')==3
    assert 'assets/laboratory.jpg' not in text
    assert 'class="federation-visual"' not in text
+   assert 'contact.html#demo' in text
   if path.stem=='solutions':assert text.count('class="solution-row"')==3
   if path.stem=='software':
+   assert 'contact.html#demo' in text
    for id in ['gennext','clinical','longevity','laboratory','community']:assert id in page.ids,(path,id)
    assert text.count('assets/laboratory.jpg')==1
    assert 'youtube-nocookie.com/embed/bQ-PGMYtemI' in text
@@ -61,14 +63,20 @@ for path in root.rglob('*.html'):
    assert text.count('class="citation"')==7
    assert 'Aziz Sancar' in text and 'assets/logos/detae.png' in text
    assert 'Portakal Klinik' in text and 'assets/logos/portakal.png' in text
-  if path.stem=='contact':assert text.count('class="contact-option"')==3
+  if path.stem=='contact':
+   assert text.count('class="contact-option"')==3
+   assert 'id="contact-form"' in text and 'action="/api/contact"' in text
+   assert 'name="marketing_opt_in" value="yes"' in text
+   for required in ['demo','career','message']:assert required in page.ids
+  if path.stem=='careers':assert 'contact.html#career' in text
+  assert 'class="header-contact" href="contact.html"' in text
  for value in page.links:
   url=urlsplit(value)
   if url.scheme or url.netloc:continue
   target=(path.parent/unquote(url.path)).resolve() if url.path else path
   assert target.exists(),(path,value)
   if url.fragment and target.suffix=='.html':assert url.fragment in Page(target.read_text()).ids,(path,value)
-assert len(real)==16 and len(aliases)==8,(len(real),len(aliases))
+assert len(real)==18 and len(aliases)==9,(len(real),len(aliases))
 assert Page((root/'index.html').read_text()).lang=='en'
 for lang,d in CONTENT.items():
  for key,(title,description) in d['metadata'].items():
@@ -77,4 +85,4 @@ for lang,d in CONTENT.items():
 for page in PAGES:
  assert (root/'tr'/(page+'.html')).exists()
  assert (root/'en'/(page+'.html')).exists()
-print('PASS: 16 content pages, 8 redirects, EN default, TR counterparts, all local links/assets/fragments, service hierarchy, reference roster and contact details.')
+print('PASS: 18 content pages, 9 redirects, EN default, TR counterparts, all local links/assets/fragments, service hierarchy, reference roster and contact details.')

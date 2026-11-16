@@ -7,11 +7,11 @@ from site_pages import CONTENT, render_page
 
 ROOT = Path(__file__).resolve().parent
 ORIGIN = 'https://geniva-web.ozkanozdemir.chatgpt.site'
-PAGES = ['index', 'solutions', 'software', 'hardware', 'training', 'about', 'references', 'contact']
+PAGES = ['index', 'solutions', 'software', 'hardware', 'training', 'about', 'references', 'careers', 'contact']
 CHANNEL = 'https://www.youtube.com/@GennextCommunity'
 ADDRESS = 'İçerenköy Mah. Kayışdağı Cad. Acıbadem Üniversitesi Tıp Fakültesi, C Blok No: 32-36C, TEKMER, Ataşehir / İstanbul'
 MAPS = 'https://www.google.com/maps/search/?api=1&query=' + quote(ADDRESS)
-VERSION = '20261116b'
+VERSION = '20261116d'
 
 def brand():
     return '<span class="brand">geniva<span aria-hidden="true">.</span></span>'
@@ -19,7 +19,7 @@ def brand():
 def header(lang, page):
     d = CONTENT[lang]
     nav = []
-    for key in ['index', 'solutions', 'about', 'references', 'contact']:
+    for key in ['index', 'solutions', 'about', 'references', 'careers']:
         current = ' aria-current="page"' if key == page else ''
         if key == 'solutions':
             links = ''.join(f'<a href="{p}.html"' + (' aria-current="page"' if p == page else '') + f'>{d["names"][p]}</a>' for p in ['solutions', 'software', 'hardware', 'training'])
@@ -30,12 +30,15 @@ def header(lang, page):
     en = '../' + page + '.html' if lang == 'tr' else page + '.html'
     tr = page + '.html' if lang == 'tr' else 'tr/' + page + '.html'
     languages = f'<nav class="language" aria-label="{d["language"]}"><a href="{en}" lang="en" data-language'+(' aria-current="true"' if lang == 'en' else '')+f'>EN</a><span aria-hidden="true">/</span><a href="{tr}" lang="tr" data-language'+(' aria-current="true"' if lang == 'tr' else '')+'>TR</a></nav>'
-    return f'<a class="skip" href="#main">{d["skip"]}</a><header class="site-header"><div class="container nav-inner"><a href="index.html" aria-label="Geniva - {d["names"]["index"]}">{brand()}</a><nav class="nav-links" id="navigation" aria-label="{d["navigation"]}">{"".join(nav)}</nav><div class="nav-tools">{languages}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">{d["menu"]}</button></div></div></header>'
+    mobile_languages = languages.replace('class="language"','class="language mobile-language"')
+    contact_label = 'İletişim' if lang == 'tr' else 'Contact Us'
+    contact_button = f'<a class="header-contact" href="contact.html">{contact_label}</a>'
+    return f'<a class="skip" href="#main">{d["skip"]}</a><header class="site-header"><div class="container nav-inner"><a href="index.html" aria-label="Geniva - {d["names"]["index"]}">{brand()}</a><nav class="nav-links" id="navigation" aria-label="{d["navigation"]}">{"".join(nav)}{mobile_languages}</nav><div class="nav-tools">{languages}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">{d["menu"]}</button>{contact_button}</div></div></header>'
 
 def footer(lang, prefix):
     d = CONTENT[lang]
     solutions = ''.join(f'<a href="{page}.html">{d["names"][page]}</a>' for page in ['software', 'hardware', 'training'])
-    company = ''.join(f'<a href="{page}.html">{d["names"][page]}</a>' for page in ['about', 'references', 'contact'])
+    company = ''.join(f'<a href="{page}.html">{d["names"][page]}</a>' for page in ['about', 'references', 'careers', 'contact'])
     return f'''<footer class="site-footer"><div class="container"><div class="footer-top">
     <div class="footer-brand"><a href="index.html" aria-label="Geniva">{brand()}</a><p>{d['tagline']}</p><a href="https://gennext.bio" target="_blank" rel="noopener">Gennext ↗</a><a href="{CHANNEL}" target="_blank" rel="noopener">YouTube · Gennext Community ↗</a></div>
     <nav class="footer-nav" aria-label="{d['names']['solutions']}"><h2>{d['names']['solutions']}</h2>{solutions}</nav>
@@ -72,7 +75,7 @@ def build():
         path = alias_dir / (page + '.html')
         path.write_text(alias)
         generated.append(path.relative_to(ROOT))
-    print('Built 16 bilingual pages and 8 legacy English redirects.')
+    print(f'Built {len(PAGES)*2} bilingual pages and {len(PAGES)} legacy English redirects.')
     return generated
 
 if __name__ == '__main__':

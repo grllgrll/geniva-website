@@ -6,7 +6,7 @@ import re
 from lxml import html
 import tinycss2, cssselect2
 
-ROOT=Path(__file__).resolve().parent/'dist'
+ROOT=Path(__file__).resolve().parent/'dist'/'client'
 rules=tinycss2.parse_stylesheet((ROOT/'styles.css').read_text(),skip_comments=True,skip_whitespace=True)
 assert not [r for r in rules if r.type=='error']
 
@@ -42,11 +42,14 @@ def style(root,selector,m):
 for width in [320,375,390,430,600,768,960,1024,1440]:
  m=matcher(width)
  for lang in ['', 'tr/']:
-  docs={p:cssselect2.ElementWrapper.from_html_root(html.fromstring((ROOT/lang/(p+'.html')).read_text())) for p in ['index','software','hardware','references','about']}
+  docs={p:cssselect2.ElementWrapper.from_html_root(html.fromstring((ROOT/lang/(p+'.html')).read_text())) for p in ['index','software','hardware','references','about','contact']}
   root=docs['index'];nav=style(root,'.nav-links',m);toggle=style(root,'.menu-toggle',m)
-  assert nav['display']==('none' if width<=960 else 'flex'),width
-  assert toggle['display']==('block' if width<=960 else 'none'),width
-  if width<=960:
+  assert nav['display']==('none' if width<=1100 else 'flex'),width
+  assert toggle['display']==('block' if width<=1100 else 'none'),width
+  assert style(docs['contact'],'.contact-grid',m)['grid-template-columns']==('1fr' if width<=760 else '1.25fr .85fr')
+  assert style(docs['contact'],'.contact-fallback',m)['grid-template-columns']==('1fr' if width<=760 else '1fr auto')
+  assert style(docs['contact'],'.form-submit',m)['width']=='100%'
+  if width<=1100:
    assert nav['height']=='calc(100dvh - 74px)' and nav['overflow-y']=='auto'
    assert 'backdrop-filter' not in style(root,'.site-header',m)
    assert style(root,'.services-grid',m)['grid-template-columns']=='1fr'
@@ -57,5 +60,5 @@ for width in [320,375,390,430,600,768,960,1024,1440]:
    assert style(docs['software'],'.workflow',m)['grid-template-columns']=='1fr'
    assert style(docs['hardware'],'.hardware-gallery',m)['grid-template-columns']=='1fr'
    assert style(docs['about'],'.omics-layers',m)['grid-template-columns']=='1fr'
- print(f'PASS {width}px: EN/TR navigation, service cards, workflow, images, references and omics CSS rules.')
+ print(f'PASS {width}px: EN/TR navigation, services, workflow, images, references, contact and omics CSS rules.')
 print('Static cascade checks only; no browser layout or interaction verification.')

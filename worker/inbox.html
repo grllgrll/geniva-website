@@ -1,0 +1,21 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Geniva | Gelen mesajlar</title><link rel="stylesheet" href="/styles.css?v=20261116d"></head><body class="inbox-page"><header class="site-header"><div class="container nav-inner"><a href="/" class="brand">geniva.</a><span>Gelen mesajlar</span><button type="button" class="header-contact" id="refresh">Yenile</button></div></header><main class="container section"><h1>İletişim, demo ve kariyer talepleri</h1><p id="inbox-status" role="status" aria-live="polite">Yükleniyor...</p><div id="enquiries" class="inbox-list"></div><button class="button navy" id="more" hidden>Daha fazla göster</button></main>
+<script>
+const list=document.querySelector('#enquiries'),status=document.querySelector('#inbox-status'),more=document.querySelector('#more');
+const topics={general:'Genel görüşme',demo:'Gennext demosu',software:'Yazılım',hardware:'Donanım',training:'Eğitim',career:'Kariyer'};
+let next=0,busy=false;
+function el(tag,text,className){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;}
+function render(item){
+ const article=el('article',undefined,'inbox-item'),head=el('div',undefined,'inbox-item-head');
+ head.append(el('h2',item.name),el('span',topics[item.topic]||item.topic,'inbox-topic'));article.append(head);
+ article.append(el('p',new Date(item.created_at).toLocaleString('tr-TR')+' · '+(item.organization||'Kurum belirtilmedi')));
+ const email=el('a',item.email,'text-link');email.href='mailto:'+encodeURIComponent(item.email)+'?subject='+encodeURIComponent('Re: Geniva - '+(topics[item.topic]||item.topic));article.append(email);
+ if(item.phone){const phone=el('a',item.phone,'text-link');phone.href='tel:'+item.phone.replace(/[^+\d]/g,'');article.append(phone);}
+ article.append(el('p','Yanıt tercihi: '+(item.reply_by==='phone'?'Telefon':'E-posta')+(item.preferred_time?' · '+item.preferred_time:'')),el('p',item.message,'inbox-message'));
+ if(item.portfolio_url){const link=el('a','CV / LinkedIn / Portfolyo','text-link');link.href=item.portfolio_url;link.target='_blank';link.rel='noopener noreferrer';article.append(link);}
+ article.append(el('p','Pazarlama e-postası izni: '+(item.marketing_opt_in?'Evet':'Hayır'),'inbox-consent'));
+ const button=el('button',item.reviewed_at?'İncelendi':'İncelendi olarak işaretle','button navy');button.type='button';button.disabled=Boolean(item.reviewed_at);
+ button.addEventListener('click',async()=>{button.disabled=true;try{const r=await fetch('/api/inbox',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:item.id})});if(!r.ok)throw new Error();button.textContent='İncelendi';}catch{button.disabled=false;status.textContent='İşaretleme kaydedilemedi. Tekrar deneyin.';}});article.append(button);return article;
+}
+async function load(reset=false){if(busy)return;busy=true;more.disabled=true;try{const r=await fetch('/api/inbox?offset='+(reset?0:next),{cache:'no-store'});if(!r.ok)throw new Error();const data=await r.json();if(reset)list.replaceChildren();data.items.forEach(item=>list.append(render(item)));next=data.next;more.hidden=next===null;status.textContent=data.total?data.total+' mesaj. Pazarlama izni her mesajda ayrı gösterilir.':'Henüz mesaj yok.';}catch{status.textContent='Mesajlar yüklenemedi. Yetkili hesabınızla giriş yaptığınızdan emin olun.';}finally{busy=false;more.disabled=false;}}
+more.addEventListener('click',()=>load());document.querySelector('#refresh').addEventListener('click',()=>load(true));load(true);
+</script></body></html>
