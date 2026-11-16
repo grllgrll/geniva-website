@@ -6,13 +6,14 @@ CONSENT = {
  'tr': 'Geniva’dan ürünler, etkinlikler ve eğitimler hakkında pazarlama e-postaları almak istiyorum.',
 }
 
-def form(lang):
+def form(lang,prefix=''):
  def t(en,tr):return tr if lang=='tr' else en
  topics=[('general',t('General enquiry','Genel görüşme')),('demo',t('Gennext demo','Gennext demosu')),('software',t('Software & Reporting','Yazılım ve Raporlama')),('hardware',t('Hardware & Infrastructure','Donanım ve Altyapı')),('training',t('Education','Eğitim')),('career',t('Career application','Kariyer başvurusu'))]
  options=''.join(f'<option value="{key}">{label}</option>' for key,label in topics)
  return f'''<div class="callback-panel" id="message">
  <span id="demo" class="section-anchor"></span><span id="career" class="section-anchor"></span>
  <p class="eyebrow">{t('LET’S CONNECT','TANIŞALIM')}</p>
+ <img class="contact-product-logo form-product-logo" data-demo-brand src="{prefix}assets/gennext.svg" alt="Gennext" width="421" height="159" hidden>
  <h2 data-form-heading>{t('Send a message.<br>Let’s talk.','Bize yazın.<br>Görüşelim.')}</h2>
  <p class="callback-description">{t('Send your message here. Prefer a callback? Choose phone below and tell us when to reach you.','Mesajınızı buradan gönderin. Sizi aramamızı isterseniz aşağıdan telefonu seçip uygun olduğunuz zamanı belirtin.')}</p>
  <form id="contact-form" action="/api/contact" method="post" aria-label="{t('Contact Geniva','Geniva iletişim formu')}">

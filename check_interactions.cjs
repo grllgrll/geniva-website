@@ -67,19 +67,22 @@ const pages = ['index','solutions','software','hardware','training','about','ref
     for (const card of d.querySelectorAll('[data-contact-topic]')) {
      assert.equal(new URL(card.href).protocol, 'mailto:');
      card.click();
-     assert.equal(topic.value, card.id);
+     assert.equal(topic.value, card.dataset.topicValue || card.id);
      assert.equal(d.querySelectorAll('.contact-option[aria-current]').length, 1);
      assert.equal(d.activeElement, form.elements.name);
      assert.equal(scrolled, 'message');
-     for (const anchor of d.querySelectorAll('[data-language]')) assert.equal(new URL(anchor.href).hash, '#' + card.id);
+     for (const anchor of d.querySelectorAll('[data-language]')) assert.equal(new URL(anchor.href).hash, '#' + (card.dataset.topicValue || card.id));
     }
     window.location.hash = '#demo';
     await new Promise(resolve => setTimeout(resolve, 5));
     assert.equal(topic.value, 'demo');
     assert.match(d.querySelector('[data-form-heading]').textContent, /demo/);
+    assert.equal(d.querySelector('[data-demo-brand]').hidden, false);
+    assert.equal(d.querySelector('[data-topic-value="demo"]').getAttribute('aria-current'), 'true');
     topic.value = 'career';topic.dispatchEvent(new window.Event('change'));
     assert.equal(form.querySelector('[data-career-field]').hidden, false);
     assert.equal(form.elements.portfolio_url.disabled, false);
+    assert.equal(d.querySelector('[data-demo-brand]').hidden, true);
     topic.value = 'general';topic.dispatchEvent(new window.Event('change'));
     assert.equal(form.elements.portfolio_url.disabled, true);
     const call = form.querySelector('[name="reply_by"][value="phone"]');call.click();

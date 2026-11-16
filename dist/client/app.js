@@ -69,10 +69,11 @@
   submit.disabled = false;
   function updateTopic(focus = false) {
    contactTopics.forEach(anchor => {
-    if (anchor.id === topic.value) anchor.setAttribute('aria-current', 'true');
+    if ((anchor.dataset.topicValue || anchor.id) === topic.value) anchor.setAttribute('aria-current', 'true');
     else anchor.removeAttribute('aria-current');
    });
    careerField.hidden = topic.value !== 'career';
+   document.querySelector('[data-demo-brand]').hidden = topic.value !== 'demo';
    form.elements.portfolio_url.disabled = careerField.hidden;
    heading.textContent = topic.value === 'demo' ? (english ? 'Book a Gennext demo.' : 'Gennext demosu talep edin.') : topic.value === 'career' ? (english ? 'Introduce yourself.' : 'Kendinizi tanıtın.') : (english ? 'Send a message. Let’s talk.' : 'Bize yazın. Görüşelim.');
    form.elements.message.placeholder = topic.value === 'demo' ? (english ? 'What would you like to explore in Gennext? Tell us about your team and availability.' : 'Gennext’te hangi alanı incelemek istersiniz? Ekibinizi ve uygun olduğunuz zamanı paylaşın.') : topic.value === 'career' ? (english ? 'Tell us about your experience, interests and how you would like to contribute.' : 'Deneyiminizi, ilgi alanlarınızı ve nasıl katkıda bulunmak istediğinizi anlatın.') : (english ? 'A few words about your needs, team or project.' : 'İhtiyacınız, ekibiniz veya projeniz hakkında birkaç cümle.');
@@ -92,7 +93,7 @@
   function setTopicHash() {const url = new URL(location.href);url.hash = topic.value;history.replaceState(null, '', url);syncLanguageLinks();}
   contactTopics.forEach(anchor => anchor.addEventListener('click', event => {
    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
-   event.preventDefault();topic.value = anchor.id;updateTopic(true);setTopicHash();
+   event.preventDefault();topic.value = anchor.dataset.topicValue || anchor.id;updateTopic(true);setTopicHash();
   }));
   topic.addEventListener('change', () => {updateTopic();setTopicHash();});
   form.querySelectorAll('[name="reply_by"]').forEach(radio => radio.addEventListener('change', syncReply));

@@ -64,7 +64,8 @@ for path in root.rglob('*.html'):
    assert 'Aziz Sancar' in text and 'assets/logos/detae.png' in text
    assert 'Portakal Klinik' in text and 'assets/logos/portakal.png' in text
   if path.stem=='contact':
-   assert text.count('class="contact-option"')==3
+   assert text.count('data-contact-topic=')==4
+   assert 'data-topic-value="demo"' in text and 'data-demo-brand' in text
    assert 'id="contact-form"' in text and 'action="/api/contact"' in text
    assert 'name="marketing_opt_in" value="yes"' in text
    for required in ['demo','career','message']:assert required in page.ids
