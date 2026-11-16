@@ -14,7 +14,7 @@ def form(lang,prefix=''):
  <span id="demo" class="section-anchor"></span><span id="career" class="section-anchor"></span>
  <p class="eyebrow">{t('LET’S CONNECT','TANIŞALIM')}</p>
  <img class="contact-product-logo form-product-logo" data-demo-brand src="{prefix}assets/gennext.svg" alt="Gennext" width="421" height="159" hidden>
- <h2 data-form-heading>{t('Send a message.<br>Let’s talk.','Bize yazın.<br>Görüşelim.')}</h2>
+ <h2 data-form-heading tabindex="-1">{t('Send a message.<br>Let’s talk.','Bize yazın.<br>Görüşelim.')}</h2>
  <p class="callback-description">{t('Send your message here. Prefer a callback? Choose phone below and tell us when to reach you.','Mesajınızı buradan gönderin. Sizi aramamızı isterseniz aşağıdan telefonu seçip uygun olduğunuz zamanı belirtin.')}</p>
  <form id="contact-form" action="/api/contact" method="post" aria-label="{t('Contact Geniva','Geniva iletişim formu')}">
  <p class="form-help">{t('Fields marked * are required.','* işaretli alanlar zorunludur.')}</p>

@@ -32,6 +32,15 @@ const pages = ['index','solutions','software','hardware','training','about','ref
    assert.equal(d.querySelector('footer').inert, true);
    assert.equal(group.open, true);
    assert.equal(d.activeElement, nav.querySelector('a'));
+   // Model visible focus targets; jsdom itself does not render their rectangles.
+   const focusTargets = [...d.querySelectorAll('.site-header a, .site-header button, .site-header summary')];
+   focusTargets.forEach(el => {el.getClientRects = () => [{}];});
+   const first = focusTargets[0], last = focusTargets.at(-1);
+   last.focus();
+   d.dispatchEvent(new window.KeyboardEvent('keydown', {key:'Tab',bubbles:true,cancelable:true}));
+   assert.equal(d.activeElement, first);
+   d.dispatchEvent(new window.KeyboardEvent('keydown', {key:'Tab',shiftKey:true,bubbles:true,cancelable:true}));
+   assert.equal(d.activeElement, last);
    d.dispatchEvent(new window.KeyboardEvent('keydown', {key:'Escape', bubbles:true}));
    assert.equal(toggle.getAttribute('aria-expanded'), 'false');
    assert.equal(d.querySelector('main').inert, false);
@@ -69,7 +78,8 @@ const pages = ['index','solutions','software','hardware','training','about','ref
      card.click();
      assert.equal(topic.value, card.dataset.topicValue || card.id);
      assert.equal(d.querySelectorAll('.contact-option[aria-current]').length, 1);
-     assert.equal(d.activeElement, form.elements.name);
+     assert.equal(d.activeElement, d.querySelector('[data-form-heading]'));
+     assert.notEqual(d.activeElement.tagName, 'INPUT');
      assert.equal(scrolled, 'message');
      for (const anchor of d.querySelectorAll('[data-language]')) assert.equal(new URL(anchor.href).hash, '#' + (card.dataset.topicValue || card.id));
     }

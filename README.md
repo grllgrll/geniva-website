@@ -46,4 +46,6 @@ The optional DOM checks use jsdom; CSS checks use lxml, tinycss2 and cssselect2.
 
 Browser visual and browser-native interaction checks remain unavailable in the current environment. Static CSS and DOM checks do not replace rendered browser QA.
 
+The [mobile review](docs/mobile-review.md) records 342 page/width checks, the contact-card focus correction and the remaining browser verification limits.
+
 The existing Sites project and owner-private access are preserved; indexing remains disabled. Publication does not change the company's external domains.
